@@ -17,13 +17,13 @@ $musicas[3] = "Love Your Self";
 
 $tocador = new TocadorMusica();
 
-$tocador->adicionarMusica($musicas);
+$tocador->adicionarMusicas($musicas);
 
-$tocador->tocarMusica();
-/*
-$tocador->adicionarMusica('Havana');
+$tocador->adicionarMusicaNoComecoDaPlaylist('Havana');
 
-$tocador->avancarMusica();
+$tocador->removerMusicaComecoPlayList();
 
-$tocador->tocarMusica();
-*/
+$tocador->removerMusicaFinalPlayList();
+
+$tocador->exibirMusicas();
+
