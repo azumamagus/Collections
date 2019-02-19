@@ -8,7 +8,12 @@ class TocadorMusica{
     {
         //Atribuindo uma lista ligada
         $this->musicas = new SplDoublyLinkedList();   
+        $this->historico = new SplStack();
         $this->musicas->rewind();
+    }
+
+    public function tocarUltimaMusicaTocada() {
+        echo “Tocando música: “ . $this->historico->pop() . “<br>”;
     }
 
     public function adicionarMusicas(SplFixedArray $musicas){
@@ -25,8 +30,9 @@ class TocadorMusica{
     {
         if($this->musicas->count() === 0 ){
             echo "Nenhuma música no Tocador!" ;  
-        }else{
+        }else{            
             echo "Tocando música: " . $this->musicas->current() . "<br>";
+            $this->historico->push($this->musicas->current());
         }        
     }
     public function adicionarMusica($musica)
