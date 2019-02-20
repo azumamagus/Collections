@@ -9,11 +9,12 @@ class TocadorMusica{
         //Atribuindo uma lista ligada
         $this->musicas = new SplDoublyLinkedList();   
         $this->historico = new SplStack();
+        $this->filaDeDownloads = new SplQueue();
         $this->musicas->rewind();
     }
 
     public function tocarUltimaMusicaTocada() {
-        echo “Tocando música: “ . $this->historico->pop() . “<br>”;
+        echo "Tocando música:" . $this->historico->pop() . "<br>";
     }
 
     public function adicionarMusicas(SplFixedArray $musicas){
@@ -85,5 +86,21 @@ class TocadorMusica{
     public function removerMusicaFinalPlayList()
     {
         $this->musicas->pop();
+    }
+
+    public function baixarMusicas()
+    {
+        if($this->musicas->count() > 0){
+            for($this->musicas->rewind(); $this->musicas->valid(); $this->musicas->next()){
+                $this->filaDeDownloads->push($this->musicas->current());
+            }
+    
+            for($this->filaDeDownloads->rewind(); $this->filaDeDownloads->valid(); $this->filaDeDownloads->next()) {
+                echo "Baixando: " . $this->filaDeDownloads->current() . "...<br>";
+        }
+        }else{
+            echo "Nenhuma música encontrada para baixar";
+        }
+        
     }
 }
