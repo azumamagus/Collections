@@ -93,8 +93,7 @@ class TocadorMusica{
         if($this->musicas->count() > 0){
             for($this->musicas->rewind(); $this->musicas->valid(); $this->musicas->next()){
                 $this->filaDeDownloads->push($this->musicas->current());
-            }
-    
+            }            
             for($this->filaDeDownloads->rewind(); $this->filaDeDownloads->valid(); $this->filaDeDownloads->next()) {
                 echo "Baixando: " . $this->filaDeDownloads->current() . "...<br>";
         }
